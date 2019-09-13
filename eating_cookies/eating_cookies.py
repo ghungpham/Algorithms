@@ -6,7 +6,16 @@ import sys
 # a solution that is more efficient than the naive 
 # recursive solution
 def eating_cookies(n, cache=None):
-  pass
+  max = 3
+  stickyHands = 0
+  if n == 0:
+    return 1
+  else:
+    for i in range(1, max + 1):
+      if i <= n:
+        stickyHands += eating_cookies(n-i)
+
+  return stickyHands
 
 if __name__ == "__main__":
   if len(sys.argv) > 1:
@@ -14,3 +23,6 @@ if __name__ == "__main__":
     print("There are {ways} ways for Cookie Monster to eat {n} cookies.".format(ways=eating_cookies(num_cookies), n=num_cookies))
   else:
     print('Usage: eating_cookies.py [num_cookies]')
+
+
+  
